@@ -11,7 +11,7 @@ typedef struct SeqList
 	struct SeqList* _next;
 }SeqList;
 
-void SeqListInit(SeqList** pphead)//³õÊ¼»¯
+void SeqListInit(SeqList** pphead)//åˆå§‹åŒ–
 {
 	*pphead = (SeqList*)malloc(sizeof(SeqList));
 	assert(*pphead);
@@ -39,8 +39,8 @@ void SeqListPushBack(SeqList** pphead, DataType data)
 {
 	assert(*pphead);
 	SeqList* NewHead = BuyHead(data);
-	SeqList* front = *pphead;//Í·Ö¸Õë
-	SeqList* cur = *pphead;//ÒÆ¶¯Ö¸Õë
+	SeqList* front = *pphead;//å¤´æŒ‡é’ˆ
+	SeqList* cur = *pphead;//ç§»åŠ¨æŒ‡é’ˆ
 	if ((*pphead)->_next == front)
 	{
 		(*pphead)->_next = NewHead;
@@ -58,7 +58,7 @@ void SeqListPushBack(SeqList** pphead, DataType data)
 void SeqListPopBack(SeqList** pphead)
 {
 	assert(*pphead);
-	SeqList* front = *pphead;//Í·½áµã
+	SeqList* front = *pphead;//å¤´ç»“ç‚¹
 	SeqList* cur = *pphead;
 	SeqList* prev = *pphead;
 	if ((*pphead)->_next == front)
@@ -78,7 +78,7 @@ void SeqListPushFront(SeqList** pphead, DataType data)
 {
 	assert(*pphead);
 	SeqList* NewHead = BuyHead(data);
-	SeqList* cur = (*pphead)->_next;//¼ÇÂ¼Í·½áµãµÄÏÂÒ»¸öÎ»ÖÃ
+	SeqList* cur = (*pphead)->_next;//è®°å½•å¤´ç»“ç‚¹çš„ä¸‹ä¸€ä¸ªä½ç½®
 	NewHead->_next = cur;
 	(*pphead)->_next = NewHead;
 }
@@ -127,7 +127,7 @@ int SeqListLength(SeqList* phead)
 	}
 }
 //////////////////////////////////////////////////////////////////////
-//²éÕÒÁ´±íµÄÖĞ¼äÔªËØ
+//æŸ¥æ‰¾é“¾è¡¨çš„ä¸­é—´å…ƒç´ 
 SeqList* SeqListMid(SeqList* phead)
 {
 	assert(phead);
@@ -147,7 +147,7 @@ SeqList* SeqListMid(SeqList* phead)
 		return slow;
 	}
 }
-//ÅĞ¶ÏÊÇ·ñÊÇÑ­»·Á´±í
+//åˆ¤æ–­æ˜¯å¦æ˜¯å¾ªç¯é“¾è¡¨
 int SeqListFloyd(SeqList* phead)
 {
 	assert(phead);
@@ -166,7 +166,7 @@ int SeqListFloyd(SeqList* phead)
 			fast = fast->_next->_next;
 			slow = slow->_next;	
 		}
-		return -1;
+ 		return -1;
 	}
 }
 
